@@ -16,7 +16,7 @@ public class Patient {
    // @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	public int patientid;
-	@NotEmpty
+	@NotEmpty(message="patientname can't be empty")
 	public String patientname;
 	@NotNull
 	public int patientage;

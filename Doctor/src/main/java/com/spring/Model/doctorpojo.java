@@ -1,6 +1,11 @@
 package com.spring.Model;
 
-public class doctorpojo {private int patientid;
+public class doctorpojo {
+	
+private int patientId;
+private String patientName;
+private int doctorId;
+	private int patientid;
 private String patientname;
 private String description;
 
@@ -11,6 +16,24 @@ public String patientaddress;
 public long patientContactNumber;
 public String disease;
 public String referaldoctor;
+public int getPatientId() {
+	return patientId;
+}
+public void setPatientId(int patientId) {
+	this.patientId = patientId;
+}
+public String getPatientName() {
+	return patientName;
+}
+public void setPatientName(String patientName) {
+	this.patientName = patientName;
+}
+public int getDoctorId() {
+	return doctorId;
+}
+public void setDoctorId(int doctorId) {
+	this.doctorId = doctorId;
+}
 public int getPatientid() {
 	return patientid;
 }
@@ -61,7 +84,8 @@ public void setReferaldoctor(String referaldoctor) {
 }
 @Override
 public String toString() {
-	return "doctorpojo [patientid=" + patientid + ", patientname=" + patientname + ", description=" + description
+	return "doctorpojo [patientId=" + patientId + ", patientName=" + patientName + ", doctorId=" + doctorId
+			+ ", patientid=" + patientid + ", patientname=" + patientname + ", description=" + description
 			+ ", patientage=" + patientage + ", patientaddress=" + patientaddress + ", patientContactNumber="
 			+ patientContactNumber + ", disease=" + disease + ", referaldoctor=" + referaldoctor + "]";
 }

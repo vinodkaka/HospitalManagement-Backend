@@ -4,15 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class ReferalDoctor {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@NotNull(message="id must not be null")
 	int refralDoctorId;
+	@NotEmpty(message="Doctor name must not be null")
 	String refralDoctorName;
+	@NotEmpty(message="Department must not be null")
 	String department;
+	@NotEmpty(message="Specialiasation must be added")
 	String specialiasation;
 	
 	

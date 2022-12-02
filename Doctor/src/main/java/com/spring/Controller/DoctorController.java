@@ -76,7 +76,7 @@ public class DoctorController {
 	      HttpEntity<doctorpojo> entity = new HttpEntity<doctorpojo>(doctor,headers);
 	      
 	      return restTemplate.exchange(
-	         "http://localhost:8000/updateById/"+id, HttpMethod.PUT, entity, String.class).getBody();
+	         "http://localhost:8885/updateById/"+id, HttpMethod.PUT, entity, String.class).getBody();
 	   }
 	   
 	  

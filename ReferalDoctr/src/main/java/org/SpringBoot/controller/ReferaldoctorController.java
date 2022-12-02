@@ -3,6 +3,9 @@ package org.SpringBoot.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
+import org.SpringBoot.Exception.ErrorDetails;
 import org.SpringBoot.Exception.ResourceNotFoundException;
 import org.SpringBoot.Model.ReferalDoctor;
 import org.SpringBoot.Repository.ReferalDoctorRepository;
@@ -10,7 +13,11 @@ import org.SpringBoot.Service.ReferalDoctorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,12 +38,12 @@ public class ReferaldoctorController {
 	Logger logger = LoggerFactory.getLogger(ReferalDoctor.class);
 	
 	@PostMapping(value="/add")
-	public void addreferaldoctor(@RequestBody ReferalDoctor referaldoctor)
+	public void addreferaldoctor(@Valid @RequestBody ReferalDoctor referaldoctor)
 	{
 		logger.info("ReferalDoctor have been added sucessfully");
 		referaldoctorService.addReferalDoctor(referaldoctor);
 	}
-	
+	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/fetch")
     public List<ReferalDoctor> getAllDoctors()
     {
@@ -66,4 +73,16 @@ public class ReferaldoctorController {
 		 }
 		 throw new ResourceNotFoundException("There is no docotor present with the given Doctor Id ");
 	}
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+    public ErrorDetails exception (MethodArgumentNotValidException val) {
+        ErrorDetails error= new ErrorDetails();
+        val.getBindingResult().getAllErrors().forEach(e->{
+        int errcode=HttpStatus.BAD_REQUEST.value();
+        error.setErrorcode(errcode);
+        String errmsg=e.getDefaultMessage();
+        error.setErrormessage(errmsg);
+                
+        });
+        return error;
+    }
 }

@@ -90,4 +90,20 @@ public class PatientServicesImpl implements PatientServices {
 		 appointment1.setDoctorId(appointment1.getDoctorId());
 		 return restTemplate.postForObject("http://localhost:8882/add",appointment, Appointment.class);
 	}
+
+
+	@Override
+	public void updatepatient(int id, Patient patient) {
+		  Patient patient1 =patientRepository.findById(id).orElse(null);
+          
+          patient1.setPatientname(patient.getPatientname());
+          patient1.setPatientid(patient.getPatientid());
+          patient1.setPatientage(patient.getPatientage());
+          patient1.setDisease(patient.getDisease());
+          patient1.setPatientaddress(patient.getPatientaddress());
+          patient1.setPatientContactNumber(patient.getPatientContactNumber());
+          patient1.setReferaldoctor(patient.getReferaldoctor());
+         
+            patientRepository.save(patient1);		
+	}
 }

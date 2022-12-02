@@ -4,45 +4,40 @@ import java.util.Date;
 
 public class ErrorDetails {
 
-	private Date timestamp;
-	private String message;
-	private String details;
-	
-	
-	public ErrorDetails(Date timestamp, String message, String details) {
-		this.timestamp = timestamp;
-		this.message = message;
-		this.details = details;
-	}
-	
+	private String errormessage;
+	private int errorcode;
 	
 	public ErrorDetails() {
+		super();
 	}
 
+	public ErrorDetails(String errormessage, int errorcode) {
+		super();
+		this.errormessage = errormessage;
+		this.errorcode = errorcode;
+	}
 
+	public String getErrormessage() {
+		return errormessage;
+	}
 
-	public Date getTimestamp() {
-		return timestamp;
+	public void setErrormessage(String errormessage) {
+		this.errormessage = errormessage;
 	}
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
+
+	public int getErrorcode() {
+		return errorcode;
 	}
-	public String getMessage() {
-		return message;
+
+	public void setErrorcode(int errorcode) {
+		this.errorcode = errorcode;
 	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	public String getDetails() {
-		return details;
-	}
-	public void setDetails(String details) {
-		this.details = details;
-	}
+
 	@Override
 	public String toString() {
-		return "ErrorDetails [timestamp=" + timestamp + ", message=" + message + ", details=" + details + "]";
+		return "ErrorDetails [errormessage=" + errormessage + ", errorcode=" + errorcode + "]";
 	}
+	
 	
 	
 }

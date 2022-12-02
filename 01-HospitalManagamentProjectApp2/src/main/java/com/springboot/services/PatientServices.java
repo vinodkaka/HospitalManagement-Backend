@@ -15,12 +15,14 @@ public interface PatientServices {
 	public Patient findBypatientname(String patientname);
 	
 	
+	
 	public Object getReports();
 	public Object getappointmentdetails();
 	public Object getallprescriptions();
 	public Object getallDoctors();
 	
 	public Object addappointment(Appointment appointment);
+	public void updatepatient(int id, Patient patient);
 	
 	
 
