@@ -10,64 +10,74 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="AppointmentTable")
+//@Table(name="AppointmentTable")
 public class Appointment {
 	
 	
 	@Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	public int AppointmentNo;
+	public int appointmentNo;
 	@NotNull
-	public int PatientId;
+	public int patientId;
 	@NotEmpty
-	public String PatientName;
+	public String patientName;
 	@NotNull
-	public int DoctorId;
+	public int doctorId;
 	
-	public Appointment(int appointmentNo, int patientId, String patientName, int doctorId) {
-		super();
-		this.AppointmentNo = appointmentNo;
-		this.PatientId = patientId;
-		this.PatientName = patientName;
-		this.DoctorId = doctorId;
-	}
 	
 	public Appointment() {
-		
-		// TODO Auto-generated constructor stub
 	}
+
+
+	public Appointment( int appointmentNo,int patientId,String patientName,
+			int doctorId) {
+		this.appointmentNo = appointmentNo;
+		this.patientId = patientId;
+		this.patientName = patientName;
+		this.doctorId = doctorId;
+	}
+
+
 	public int getAppointmentNo() {
-		return AppointmentNo;
+		return appointmentNo;
 	}
+
+
 	public void setAppointmentNo(int appointmentNo) {
-		this.AppointmentNo = appointmentNo;
+		this.appointmentNo = appointmentNo;
 	}
+
+
 	public int getPatientId() {
-		return PatientId;
+		return patientId;
 	}
+
+
 	public void setPatientId(int patientId) {
-		this.PatientId = patientId;
+		this.patientId = patientId;
 	}
+
+
 	public String getPatientName() {
-		return PatientName;
+		return patientName;
 	}
+
+
 	public void setPatientName(String patientName) {
-		this.PatientName = patientName;
+		this.patientName = patientName;
 	}
+
+
 	public int getDoctorId() {
-		return DoctorId;
+		return doctorId;
 	}
+
+
 	public void setDoctorId(int doctorId) {
-		this.DoctorId = doctorId;
+		this.doctorId = doctorId;
 	}
-	@Override
-	public String toString() {
-		return "Appointment [AppointmentNo=" + AppointmentNo + ", PatientId=" + PatientId + ", PatientName="
-				+ PatientName + ", DoctorId=" + DoctorId + "]";
-	}
-	
-	
 	
 
+	
 }
